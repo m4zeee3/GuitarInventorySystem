@@ -14,48 +14,48 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-100">
-      <header className="bg-slate-900 text-white px-6 py-5 shadow">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
+    <div className="min-h-screen">
+      <header className="border-b-4 border-copper bg-ink text-paper">
+        <div className="max-w-6xl mx-auto px-6 py-7 flex items-center justify-between gap-6">
           <div>
-            <h1 className="text-xl font-bold tracking-tight">
-              🎸 Guitar Store Inventory Manager
-            </h1>
-            <p className="text-sm text-slate-300">
-              Register guitars, browse the inventory registry, and inspect item details.
+            <p className="text-[11px] uppercase tracking-[0.35em] text-copper-soft font-semibold">
+              Est. Inventory Ledger
             </p>
+            <h1 className="font-display text-3xl font-semibold tracking-tight">
+              Six String Registry
+            </h1>
           </div>
 
           {view === 'table' && (
             <button
               type="button"
               onClick={() => setView('form')}
-              className="rounded-md bg-white/10 hover:bg-white/20 px-4 py-2 text-sm font-medium transition-colors"
+              className="shrink-0 rounded-sm border border-copper-dark/40 bg-copper px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-ink transition-colors hover:bg-copper-dark hover:text-paper"
             >
-              + Add New Guitar
+              New Entry
             </button>
           )}
         </div>
       </header>
 
-      <main className="max-w-6xl mx-auto px-6 py-8">
+      <main className="max-w-6xl mx-auto px-6 py-12">
         {view === 'form' ? (
           <>
             <GuitarForm onAddGuitar={handleAddGuitar} />
             {guitars.length > 0 && (
-              <div className="mt-6 text-center">
+              <div className="mt-8 text-center">
                 <button
                   type="button"
                   onClick={() => setView('table')}
-                  className="text-sm text-slate-600 underline hover:text-slate-900"
+                  className="text-sm font-medium text-ink-soft underline decoration-copper decoration-2 underline-offset-4 hover:text-copper-dark"
                 >
-                  View registry ({guitars.length} registered)
+                  View registry — {guitars.length} item{guitars.length === 1 ? '' : 's'} logged
                 </button>
               </div>
             )}
           </>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
             <div className="lg:col-span-2">
               <GuitarTable
                 guitars={guitars}
